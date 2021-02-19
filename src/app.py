@@ -1,6 +1,14 @@
 import hashlib as hs
 import os
 from time import time
+import sys, getopt
+# pip install -U memory_profiler
+#Con el decorador @profile podemos ver la memoria que está usando, para ello necesitamos tener memory_profiler instalado, podemos hacerlo con:
+
+
+
+def lineParam():
+    pass
 
 def funcDicstCall(paramSha, callDictId):
     dictShaFunc = {
@@ -31,23 +39,25 @@ def _CRIV2(rutDict, na):
         if na == funcDicstCall(i.replace('\n', '').encode('utf-8'), '--sha512'):
             return i
         
+def _CRIV3(rutDict, na):
+    return [i.replace('\n', '') for i in open(os.path.abspath(rutDict),'r').readlines() if na == funcDicstCall(i.replace('\n', '').encode('utf-8'), '--sha512')]
+
+
 if __name__ == '__main__':
-    
-    print('''
-          
-          ''')
+    print('''''')
     #OP_Encripting = input('Introduce tu hash: ')
     #OP_HashSelect = input('introduce tipo de criptografia: ')
     start_time = time()
-    prueba = _CRI(_Encripting='dc517d7ed2c7e9ec2870aabefbd9985f395ebbca1a0a100807cbdd489796ce91dce58500c79e20c18ffe322b339465999c5cf37e5937db6b42a08ac48b9a74e6',
+    print(_CRI(_Encripting='dc517d7ed2c7e9ec2870aabefbd9985f395ebbca1a0a100807cbdd489796ce91dce58500c79e20c18ffe322b339465999c5cf37e5937db6b42a08ac48b9a74e6',
                HashSelect='--sha512', 
                rutDict='../dict/dictPassword.txt'
-               )
-    print(prueba)
+               ))
     print(time() - start_time)
-    
     start_time = time()
-    ss = _CRIV2('../dict/dictPassword.txt','dc517d7ed2c7e9ec2870aabefbd9985f395ebbca1a0a100807cbdd489796ce91dce58500c79e20c18ffe322b339465999c5cf37e5937db6b42a08ac48b9a74e6')
-    print(ss)
+    print(*_CRIV3('../dict/dictPassword.txt',
+        'dc517d7ed2c7e9ec2870aabefbd9985f395ebbca1a0a100807cbdd489796ce91dce58500c79e20c18ffe322b339465999c5cf37e5937db6b42a08ac48b9a74e6')
+        )
     print(time() - start_time)
-    
+    print(sys.argv)
+
+

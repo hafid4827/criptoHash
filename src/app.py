@@ -55,13 +55,12 @@ def pruebados(Def, Sha, Option, Redirect):
 
 if __name__ == '__main__':
     parser = ArgumentParser(description = ' -D CRYV1 -S dc517d7ed2c7e9ec2870a... -O sha512 -R ../dict/dictPassword.txt')
-    parser.add_argument('-D', '--DEF',) # opcion de cualquier funcion que exite 
-    parser.add_argument('-S', '--SHA',)# criptografia encriptada
-    parser.add_argument('-O', '--OPTION',) # funcion seletivo hash
-    parser.add_argument('-R', '--REDIRECT',) # direccion opcional del diccionario
+    parser.add_argument('-D', '--DEF',)
+    parser.add_argument('-S', '--SHA',)
+    parser.add_argument('-O', '--OPTION',)
+    parser.add_argument('-R', '--REDIRECT',)
     args = parser.parse_args()
-    #OP_Encripting = input('Introduce tu hash: ')
-    #OP_HashSelect = input('introduce tipo de criptografia: ')
+    
     initTime = time()
     print(*pruebados(
         Def = args.DEF,

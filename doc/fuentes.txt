@@ -1,5 +1,2 @@
-pagina curiosa de testing 
+Extender mas los diccionario consultar:
 http://www.vulnerabilityassessment.co.uk
-
-wiki tor page 
-https://thehiddenwiki.org

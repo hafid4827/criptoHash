@@ -17,8 +17,6 @@ def funcDicstCall(paramSha, callDictId):
         'sha3_256': hs.sha3_256(paramSha),
         'sha3_384': hs.sha3_384(paramSha),
         'sha3_512': hs.sha3_512(paramSha),
-        #'shake_128': hs.shake_128(x.encode('utf-8')).hexdigest(),
-        #'shake_256': hs.shake_256(x.encode('utf-8')).hexdigest(),
     }
     return dictShaFunc[callDictId].hexdigest()
 #'../dict/dictPassword.txt'
@@ -59,13 +57,27 @@ if __name__ == '__main__':
 
     orsep = '\n\t'+'-'*30
 
-    parser = ArgumentParser(description='decripcion degeneral')
-    parser.add_argument('-D', '--DEF', help='#')
-    parser.add_argument('-S', '--SHA', help='#')
-    parser.add_argument('-L', '--LEN', help='#')
-    parser.add_argument('-T', '--TEXT', help='#')
-    parser.add_argument('-O', '--OPTION', help='#')
-    parser.add_argument('-R', '--REDIRECT', help='#')
+    parser = ArgumentParser(
+        description='''
+        DESCRIPCION:
+            criptoHash es un pequeño proyecto de prueba para decifrar contraseñas
+            con las criptografias mas populares que se manejan hoy dia.
+        ''')
+    parser.add_argument(
+        '-D', '--DEF', 
+        help='# Selector de algoritmo CRIV1, CRIV2, CRIV3')
+    parser.add_argument(
+        '-S', '--SHA', 
+        help='# Criptografia a decifrar ce7aaac2b65b110c2c52d2...')
+    parser.add_argument(
+        '-T', '--TEXT', 
+        help='# Convertidor caracteres -T hola --> ce7aaac2b65b110c2c52d2...')
+    parser.add_argument(
+        '-O', '--OPTION',
+        help='# -O [opcion] --> md5, sha1, sha224, sha256, sha384, sha512, blake2b, blake2s, sha3_224, sha3_256, sha3_384, sha3_512')
+    parser.add_argument(
+        '-R', '--REDIRECT',
+        help='# Default: ../dict/dictPassword.txt, -R [ruta]')
     args = parser.parse_args()
 
     print(orsep)

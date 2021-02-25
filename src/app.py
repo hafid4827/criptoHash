@@ -20,20 +20,20 @@ def funcDicstCall(paramSha, callDictId):
     }
     return dictShaFunc[callDictId].hexdigest()
 #'../dict/dictPassword.txt'
-def _CRIV1(_Encripting, HashSelect, rutDict = ''):
-    if rutDict != '': rutDict = '../dict/dictPassword.txt'
-    openDict = open(path.abspath(rutDict),'r').readlines()
+def _CRIV1(_Encripting, HashSelect, rutDict = None):
+    if rutDict == None: rutDict = '../dict/dictPassword.txt'
+    openDict = open(path.abspath(rutDict),'r').readlines() # variable temporar
     return openDict[list(map(lambda iterDict : funcDicstCall(iterDict.replace('\n', '').encode('utf-8'),HashSelect),openDict)).index(_Encripting)].replace('\n', '')
 
-def _CRIV2(_Encripting, HashSelect, rutDict = ''):
-    if rutDict != '': rutDict = '../dict/dictPassword.txt'
+def _CRIV2(_Encripting, HashSelect, rutDict = None):
+    if rutDict == None: rutDict = '../dict/dictPassword.txt'
     openDict = open(path.abspath(rutDict),'r').readlines()
     for i in openDict:
         if _Encripting == funcDicstCall(i.replace('\n', '').encode('utf-8'), HashSelect):
             return i.replace('\n', '')
         
-def _CRIV3(_Encripting, HashSelect, rutDict = ''):
-    if rutDict != '': rutDict = '../dict/dictPassword.txt'
+def _CRIV3(_Encripting, HashSelect, rutDict = None):
+    if rutDict == None: rutDict = '../dict/dictPassword.txt'
     return [i.replace('\n', '') for i in open(path.abspath(rutDict),'r').readlines() if _Encripting == funcDicstCall(i.replace('\n', '').encode('utf-8'), HashSelect)]
 
 def argumentLinePy(Def, Sha, Option, Redirect):
@@ -79,7 +79,7 @@ if __name__ == '__main__':
         '-R', '--REDIRECT',
         help='# Default: ../dict/dictPassword.txt, -R [ruta]')
     args = parser.parse_args()
-
+    
     print(orsep)
 
     initTime = time()

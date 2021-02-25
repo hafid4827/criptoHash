@@ -84,12 +84,15 @@ if __name__ == '__main__':
 
     initTime = time()
 
-    print('\tContraseña decifrada:', argumentLinePy(
+    try:
+        print('\tContraseña decifrada:', argumentLinePy(
         Def = args.DEF,
         Sha= args.SHA,
         Option= args.OPTION,
         Redirect= args.REDIRECT,
         ))
+    except:
+        print('\tError no se pudo desencriptar')
 
     if args.TEXT != None:
         print(funcDicstCall(args.TEXT.encode('utf-8'), args.OPTION))
